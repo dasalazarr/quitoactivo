@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -13,8 +14,9 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
 import { MapPin } from "lucide-react";
 import { Timer } from "lucide-react";
+import EventMap from "./EventMap";
 
-interface Event {
+export interface Event {
   id: string;
   name: string;
   date: string;
@@ -38,8 +40,7 @@ const EventsShowcase = () => {
       date: "15 Junio, 2025",
       location: "Centro Histórico",
       distance: "10K",
-      image:
-        "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80",
     },
     {
       id: "2",
@@ -65,8 +66,7 @@ const EventsShowcase = () => {
       date: "5 Septiembre, 2025",
       location: "Cumbayá",
       distance: "5K",
-      image:
-        "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80",
+      image: "/quito.jpg",
     },
   ];
 
@@ -167,7 +167,7 @@ const EventsShowcase = () => {
                           <span>Distancia: {event.distance}</span>
                         </div>
                       </div>
-                      <div className="mt-4 pt-4 border-t border-gray-100">
+                      <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
                         <a
                           href="#"
                           className="text-primary font-medium hover:underline inline-flex items-center"
@@ -189,6 +189,12 @@ const EventsShowcase = () => {
                             />
                           </svg>
                         </a>
+                        <Link
+                          to="/checkout"
+                          className="bg-emerald-600 text-white px-3 py-1 rounded-md text-sm hover:bg-emerald-700 transition-colors"
+                        >
+                          Inscribirse
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>
@@ -205,36 +211,9 @@ const EventsShowcase = () => {
 
           <TabsContent value="map" className="mt-0">
             <div className="bg-gray-100 rounded-lg overflow-hidden h-[500px] relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="mb-4">
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Mapa Interactivo
-                  </h3>
-                  <p className="mt-1 text-gray-500">
-                    En la versión completa, aquí se mostraría un mapa
-                    interactivo con la ubicación de todos los eventos.
-                  </p>
-                </div>
-              </div>
-              {/* Map placeholder with event markers */}
-              <div className="absolute bottom-4 right-4 bg-white p-2 rounded-md shadow-md">
-                <p className="text-xs text-gray-500">4 eventos encontrados</p>
+              <EventMap events={filteredEvents} />
+              <div className="absolute bottom-4 right-4 bg-white p-2 rounded-md shadow-md z-[400]">
+                <p className="text-xs text-gray-500">{filteredEvents.length} eventos encontrados</p>
               </div>
             </div>
           </TabsContent>

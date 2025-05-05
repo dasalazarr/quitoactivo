@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { useRoutes, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
+import CheckoutPage from "./pages/checkout";
 import routes from "tempo-routes";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           {import.meta.env.VITE_TEMPO === "true" && (
             <Route path="/tempobook/*" element={<></>} />
           )}

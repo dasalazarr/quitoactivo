@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <img
-            src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=100&q=80"
+            src="/FD5qXP8n_400x400.jpg"
             alt="Quito Deporte Logo"
             className="h-10 w-10 rounded-full object-cover"
           />

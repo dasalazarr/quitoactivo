@@ -20,7 +20,7 @@ const HeroSection = ({
       problemSection.scrollIntoView({ behavior: "smooth" });
     }
   },
-  backgroundImage = "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1200&q=80",
+  backgroundImage = "/pacha.svg",
 }: HeroSectionProps) => {
   return (
     <div className="relative w-full h-screen bg-background overflow-hidden">
@@ -29,7 +29,7 @@ const HeroSection = ({
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/0" />
       </div>
 
       {/* Content Container */}
@@ -40,46 +40,15 @@ const HeroSection = ({
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-          {/* Hero Title */}
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            {title}
-          </motion.h1>
+          {/* Title and subtitle removed */}
 
-          {/* Hero Subtitle */}
-          <motion.p
-            className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            {subtitle}
-          </motion.p>
-
-          {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <Button
-              size="lg"
-              onClick={onCtaClick}
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-md transition-all hover:scale-105"
-            >
-              {ctaText}
-            </Button>
-          </motion.div>
+          {/* CTA Button removed */}
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-28 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -89,9 +58,20 @@ const HeroSection = ({
           repeatType: "reverse",
         }}
       >
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce" />
-        </div>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="40" 
+          height="40" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="text-white animate-bounce"
+        >
+          <path d="m19 12-7 7-7-7"></path>
+        </svg>
       </motion.div>
     </div>
   );
